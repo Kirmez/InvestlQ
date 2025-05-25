@@ -1,14 +1,33 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Logging in:", { email, password });
+
+    try {
+      const res = await fetch("http://localhost:8080/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (res.ok) {
+        router.push("/"); 
+      } else {
+        const error = await res.text();
+        alert("Login failed: " + error);
+      }
+    } catch (err) {
+      alert("Error connecting to server");
+    }
   };
 
   return (
