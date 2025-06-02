@@ -48,7 +48,7 @@ export default function RegisterPage() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-gray-100">
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">Create Account</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center text-black">Create Account</h1>
         
         {error && (
           <div className="mb-4 p-2 bg-red-100 text-red-700 rounded">
@@ -64,7 +64,7 @@ export default function RegisterPage() {
             name="nombre"
             value={formData.nombre}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-300 rounded text-black"
             required
           />
         </div>
@@ -77,7 +77,7 @@ export default function RegisterPage() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-300 rounded text-black"
             required
           />
         </div>
@@ -90,7 +90,7 @@ export default function RegisterPage() {
             name="password"
             value={formData.password}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-300 rounded text-black"
             required
             minLength={6}
           />

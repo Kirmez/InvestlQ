@@ -1,7 +1,6 @@
 package net.javaguides.invest.model;
 
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -11,15 +10,15 @@ public class CarteraActivos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;  
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
-    private User usuario;
+    private User usuario;  
 
     @ManyToOne
     @JoinColumn(name = "id_activo")
-    private Activo activo;
+    private Activo activo;  
 
     @Column(name = "cantidad")
     private BigDecimal cantidad;

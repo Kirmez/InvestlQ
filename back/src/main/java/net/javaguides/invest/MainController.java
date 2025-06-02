@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "http://localhost:3000") 
+@CrossOrigin(origins = "http://localhost:3000")
 public class MainController {
 
     @Autowired
@@ -29,11 +29,8 @@ public class MainController {
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody User user) {
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-            return ResponseEntity
-                    .badRequest()
-                    .body("Error: Ya existe un usuario con ese email.");
+            return ResponseEntity.badRequest().body("Error: Ya existe un usuario con ese email.");
         }
-
         return ResponseEntity.ok(userRepository.save(user));
     }
 
@@ -53,5 +50,4 @@ public class MainController {
     public void deleteUser(@PathVariable Long id) {
         userRepository.deleteById(id);
     }
-
 }

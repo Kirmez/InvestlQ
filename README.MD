@@ -1,23 +1,21 @@
 Para back
 
--cd back
+cd back
 
 *** instalar en extension "Spring Boot Extension Pack" ***
 
--./mvnw spring-boot:run
+./mvnw spring-boot:run
 
 
 Para front 
 
--cd front
+cd front
 
--npm install
+npm install
 
--npm run dev
+npm run dev
 
 
 Para BBDD
 
-- iniciar back y front
-
-- http://localhost:8080/api/pacientes
+docker compose up -d

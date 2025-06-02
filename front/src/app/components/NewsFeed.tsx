@@ -7,7 +7,7 @@ export default function NewsFeed() {
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">News from X</h2>
+      <h2 className="text-xl font-semibold text-gray-800 mb-4">Dashboard</h2>
       {news.map((item, index) => (
         <div key={index} className="mb-4">
           <h3 className="text-lg font-bold text-gray-700">{item.title}</h3>

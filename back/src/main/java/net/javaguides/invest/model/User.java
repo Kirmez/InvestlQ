@@ -23,6 +23,12 @@ public class User {
     @Column(name = "fecha_registro")
     private LocalDateTime fechaRegistro;
 
+    @Column(name = "horizonte_inversion")
+    private Integer horizonteInversion;
+
+    @Column(name = "nivel_riesgo")
+    private String nivelRiesgo;
+
     @PrePersist
     public void generateRandomId() {
         this.idUsuario = ThreadLocalRandom.current().nextLong(1_000_000L, 10_000_000L);
@@ -38,4 +44,8 @@ public class User {
     public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
     public LocalDateTime getFechaRegistro() { return fechaRegistro; }
     public void setFechaRegistro(LocalDateTime fechaRegistro) { this.fechaRegistro = fechaRegistro; }
+    public Integer getHorizonteInversion() { return horizonteInversion; }
+    public void setHorizonteInversion(Integer horizonteInversion) { this.horizonteInversion = horizonteInversion; }
+    public String getNivelRiesgo() { return nivelRiesgo; }
+    public void setNivelRiesgo(String nivelRiesgo) { this.nivelRiesgo = nivelRiesgo; }
 }

@@ -20,7 +20,9 @@ export default function LoginPage() {
       });
 
       if (res.ok) {
-        router.push("/"); 
+        const user = await res.json(); 
+        localStorage.setItem("loggedInUser", JSON.stringify(user));
+        router.push("/");
       } else {
         const error = await res.text();
         alert("Login failed: " + error);
@@ -40,7 +42,7 @@ export default function LoginPage() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-2 mb-4 border border-gray-300 rounded"
+          className="w-full p-2 mb-4 border border-gray-300 rounded text-black"
           required
         />
         <input
@@ -48,7 +50,7 @@ export default function LoginPage() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-2 mb-6 border border-gray-300 rounded"
+          className="w-full p-2 mb-6 border border-gray-300 rounded text-black"
           required
         />
         <button

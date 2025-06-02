@@ -55,7 +55,7 @@ public class RegistroUsuario {
             System.out.println("ID asignado: " + idUsuario);
 
         } catch (SQLException e) {
-            if (e.getErrorCode() == 1062) { // Duplicate entry error code
+            if (e.getErrorCode() == 1062) { 
                 System.out.println("ID duplicado generado, intentando nuevamente...");
                 registrarUsuario(nombre, email, contraseña, nivelRiesgo, horizonte);
             } else {

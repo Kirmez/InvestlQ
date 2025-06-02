@@ -1,12 +1,11 @@
 package net.javaguides.invest.service;
 
-import java.util.Optional;
-
+import net.javaguides.invest.model.User;
+import net.javaguides.invest.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import net.javaguides.invest.model.User;
-import net.javaguides.invest.repository.UserRepository;
+import java.util.Optional;
 
 @Service
 public class UserService {
