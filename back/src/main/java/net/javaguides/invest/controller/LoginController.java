@@ -1,5 +1,7 @@
 package net.javaguides.invest.controller;
 
+import jakarta.validation.Valid;
+import net.javaguides.invest.dto.LoginRequest;
 import net.javaguides.invest.model.User;
 import net.javaguides.invest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -19,16 +20,13 @@ public class LoginController {
     private UserService userService;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Map<String, String> credentials) {
-        String email = credentials.get("email");
-        String password = credentials.get("password");
-
-        Optional<User> user = userService.authenticate(email, password);
+    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest loginRequest) {
+        Optional<User> user = userService.authenticate(loginRequest.getEmail(), loginRequest.getPassword());
 
         if (user.isPresent()) {
-            return ResponseEntity.ok(user.get()); 
+            return ResponseEntity.ok("Login successful");
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales inválidas");
         }
     }
 }

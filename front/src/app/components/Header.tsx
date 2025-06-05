@@ -8,7 +8,7 @@ export default function Header() {
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center space-x-8">
           <Link href="/" className="text-xl font-bold text-blue-600">
-            InvestQL
+            InvestLQ
           </Link>
         
         </div>

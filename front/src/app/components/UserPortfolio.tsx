@@ -46,7 +46,7 @@ export default function UserPortfolio({ userId, reloadTrigger }: Props) {
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-md h-full">
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">User Portfolio</h2>
+      <h2 className="text-xl font-semibold text-gray-800 mb-4">Mi Portfolio</h2>
 
       {loading && <p className="text-gray-500">Cargando cartera...</p>}
       {error && <p className="text-red-500">{error}</p>}

@@ -47,8 +47,9 @@ export default function Page() {
       <Header />
 
       <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          <div className="lg:col-span-1">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-stretch">
+
+          <div className="lg:col-span-1 flex flex-col h-full space-y-6">
             <NewsFeed />
             <ActivosPerformance />
           </div>
@@ -57,8 +58,6 @@ export default function Page() {
             {loggedInUser && (
               <>
                 <InvestiqChart
-                  userId={loggedInUser.idUsuario}
-                  onTransactionComplete={handleTransactionComplete}
                 />
                 <BuySellInvestiqStock
                   userId={loggedInUser.idUsuario}

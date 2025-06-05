@@ -76,7 +76,7 @@ export default function BuyActivos({ userId, onTransactionComplete }: Props) {
 
   return (
     <div className="bg-white p-4 mt-6 rounded-lg shadow-md">
-      <h2 className="text-xl font-bold text-gray-800 mb-4">Buy Activo</h2>
+      <h2 className="text-xl font-bold text-gray-800 mb-4">Comprar Activo</h2>
 
       {error && <p className="text-red-500 mb-2">{error}</p>}
 

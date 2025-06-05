@@ -63,11 +63,10 @@ CREATE TABLE transacciones (
 
 INSERT INTO activos (id_activo, nombre) VALUES
   (1, 'InvestIQ'),
-  (2, 'CryptoX'),
-  (3, 'GreenFund'),
-  (4, 'Energy ETF'),
-  (5, 'BondPro'),
   (111, 'accion'),
   (222, 'bono'),
   (333, 'ETF'),
   (444, 'crypto');
+
+  INSERT INTO activos (id_activo, nombre) VALUES (1, 'InvestIQ');
+

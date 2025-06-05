@@ -1,12 +1,13 @@
 package net.javaguides.invest;
 
 import net.javaguides.invest.model.User;
-import net.javaguides.invest.repository.UserRepository;
+import net.javaguides.invest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -14,40 +15,36 @@ import java.util.List;
 public class MainController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
-    @GetMapping
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
+   @GetMapping
+public ResponseEntity<Page<User>> getAllUsers(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "10") int size) {
+
+    Page<User> usersPage = userService.getAllUsers(PageRequest.of(page, size));
+    return ResponseEntity.ok(usersPage);
+}
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userRepository.findById(id).orElse(null);
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        return userService.getUserById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody User user) {
-        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-            return ResponseEntity.badRequest().body("Error: Ya existe un usuario con ese email.");
-        }
-        return ResponseEntity.ok(userRepository.save(user));
+        return userService.createUser(user);
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User userDetails) {
-        User user = userRepository.findById(id).orElse(null);
-        if (user != null) {
-            user.setNombre(userDetails.getNombre());
-            user.setEmail(userDetails.getEmail());
-            user.setPasswordHash(userDetails.getPasswordHash());
-            return userRepository.save(user);
-        }
-        return null;
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
+        return userService.updateUser(id, userDetails);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id) {
-        userRepository.deleteById(id);
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+        return userService.deleteUser(id);
     }
 }
