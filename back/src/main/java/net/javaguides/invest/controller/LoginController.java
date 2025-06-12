@@ -24,7 +24,7 @@ public class LoginController {
         Optional<User> user = userService.authenticate(loginRequest.getEmail(), loginRequest.getPassword());
 
         if (user.isPresent()) {
-            return ResponseEntity.ok("Login successful");
+          return ResponseEntity.ok(user.get()); 
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales inválidas");
         }

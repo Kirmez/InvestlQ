@@ -9,6 +9,9 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
+  console.log("Email:", email);
+  console.log("Password:", password);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -20,7 +23,7 @@ export default function LoginPage() {
       });
 
       if (res.ok) {
-        const user = await res.json(); 
+        const user = await res.json();
         localStorage.setItem("loggedInUser", JSON.stringify(user));
         router.push("/");
       } else {
@@ -34,8 +37,12 @@ export default function LoginPage() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-gray-100">
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow-md w-full max-w-sm">
-        <h1 className="text-2xl font-bold mb-6 text-center text-black">Login</h1>
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-8 rounded shadow-md w-full max-w-sm">
+        <h1 className="text-2xl font-bold mb-6 text-center text-black">
+          Login
+        </h1>
 
         <input
           type="email"
@@ -55,8 +62,7 @@ export default function LoginPage() {
         />
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-        >
+          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
           Login
         </button>
       </form>

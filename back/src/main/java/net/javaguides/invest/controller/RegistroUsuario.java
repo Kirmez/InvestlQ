@@ -37,8 +37,9 @@ public class RegistroUsuario {
         long idUsuario = ThreadLocalRandom.current().nextLong(1_000_000L, 10_000_000L);
         
         String sql = "INSERT INTO usuarios (id_usuario, nombre, email, contraseña_hash, " +
-                     "nivel_riesgo, horizonte_inversion, fecha_registro) " +
-                     "VALUES (?, ?, ?, SHA2(?, 256), ?, ?, NOW())";
+             "nivel_riesgo, horizonte_inversion, fecha_registro) " +
+             "VALUES (?, ?, ?, ?, ?, ?, NOW())";
+
 
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

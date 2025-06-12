@@ -27,7 +27,7 @@ export default function BuySellInvestiqStock({ userId, onTransactionComplete }: 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          idActivo: 1, 
+          idActivo: 4, 
           tipo: type,
           cantidad: quantity,
           precioCompra: 100
